@@ -24,12 +24,6 @@
   "bugs": {
     "url": "https://github.com/wandjs/wand/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/vitch/grunt-haggerston/blob/master/LICENSE-MIT"
-    }
-  ],
   "engines": {
     "node": ">= 0.8.0"
   },
