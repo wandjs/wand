@@ -1,6 +1,6 @@
 {
   "name": "wand",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./lib/wand.js",
   "dependencies": {
     "underscore": "~1.4.4"
