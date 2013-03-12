@@ -39,7 +39,7 @@
   },
   "jam": {
     "dependencies": {
-      "underscore": "~1.4.4"
+      "underscore": "~1.4.3"
     },
     "main": "./lib/wand.js"
   }
