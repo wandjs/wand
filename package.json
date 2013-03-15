@@ -29,7 +29,8 @@
   },
   "main": "./lib/wand.js",
   "dependencies": {
-    "underscore": "~1.4.4"
+    "underscore": "~1.4.4",
+    "amdefine": "0.0.4"
   },
   "devDependencies": {
     "grunt": "~0.4.0",
