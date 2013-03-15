@@ -1,7 +1,7 @@
-var assert = require("assert");
+var expect = require('chai').expect;
 
 describe('wand test', function(){
   it('should be true', function(){
-    assert.ok(true);
+    expect(true).to.be.true;
   });
 });

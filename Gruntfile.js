@@ -13,6 +13,7 @@ module.exports = function(grunt) {
       mocha: {
         src: ['test/**/*.js'],
         options: {
+          expr: true,
           globals: {
             describe: false,
             it: false,
