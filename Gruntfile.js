@@ -38,6 +38,9 @@ module.exports = function(grunt) {
         eqnull: true,
         node: true,
         es5: true,
+        globals: {
+          define: true
+        }
       }
     },
     mocha: {
