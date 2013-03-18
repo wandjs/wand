@@ -32,9 +32,9 @@
     "test": "grunt mocha"
   },
   "dependencies": {
-    "underscore": "~1.4.4",
     "amdefine": "0.0.4",
-    "backbone": "0.9.10"
+    "underscore": "~1.4.4",
+    "backbone": "~0.9.10"
   },
   "devDependencies": {
     "grunt": "~0.4.0",
