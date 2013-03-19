@@ -354,4 +354,24 @@ describe('utils', function(){
     });
   });
 
+  describe('empty()', function(){
+    var empty = utils.empty;
+    it('should remove all elements of an array', function(){
+      expect(empty([1,2])).to.be.empty;
+    });
+    it('should remove all properties of an object', function(){
+      expect(empty({a:1,b:2})).to.be.empty;
+    });
+    it('should return an empty object or array unchanged', function(){
+      expect(empty([])).to.be.empty;
+      expect(empty({})).to.be.empty;
+    });
+    it('should return the original object passed in', function(){
+      var a = [1,2];
+      var b = {a:1,b:2};
+      expect(empty(a)).to.equal(a);
+      expect(empty(b)).to.equal(b);
+    });
+  });
+
 });
