@@ -28,9 +28,31 @@ describe('EventBus', function(){
 
       eventBus.on('myEvent', callBack);
       
-      eventBus.trigger('myEvent', 'hello');
+      eventBus.trigger('myEvent');
 
       expect(callBack).to.be.calledOnce;
+
+      done();
+    });
+
+    it('"eventNameSpace:" should trigger "eventNameSpace"', function(done){
+
+      eventBus.on('eventNameSpace:', callBack);
+      
+      eventBus.trigger('eventNameSpace:');
+
+      expect(callBack).to.be.calledOnce;
+
+      done();
+    });
+
+    it('":eventNameSpace" shouldn\'t trigger "eventNameSpace"', function(done){
+
+      eventBus.on('eventNameSpace', callBack);
+      
+      eventBus.trigger(':eventNameSpace');
+
+      expect(callBack).to.not.be.calledOnce;
 
       done();
     });
