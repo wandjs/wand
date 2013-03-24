@@ -6,10 +6,6 @@ var eventBus = require('../lib/event-bus');
 chai.use(sinonChai);
 
 var expect = chai.expect;
-var should = chai.should;
-
-
-
 
 describe('EventBus', function(){
 
