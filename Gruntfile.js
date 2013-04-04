@@ -44,7 +44,7 @@ module.exports = function(grunt) {
       }
     },
     mocha: {
-      src: ['test/*.js'],
+      src: ['test/**/*.js'],
       options: {
         reporter: 'dot'
       }

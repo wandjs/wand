@@ -44,7 +44,8 @@
     "mocha": "~1.8.2",
     "chai": "~1.5.0",
     "sinon-chai": "~2.3.1",
-    "sinon": "~1.6.0"
+    "sinon": "~1.6.0",
+    "jquery": "~1.8.3"
   },
   "jam": {
     "main": "./lib/wand.js"
