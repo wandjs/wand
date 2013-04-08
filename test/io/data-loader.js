@@ -70,6 +70,18 @@ describe('DataLoader', function(){
 
   });
 
+  describe('triggerComplete', function(){
+
+    it('should trigger complete event', function(done){
+      dataLoader.on('complete', callBack);
+      dataLoader.triggerComplete();
+      expect(callBack).to.be.calledOnce;
+      expect(callBack).to.be.calledWithMatch({target:dataLoader});
+      done()
+    });
+
+  });
+
   describe('start', function(){
 
     it('complete should be true', function(done){
@@ -85,14 +97,59 @@ describe('DataLoader', function(){
       done();
     });
 
+    it('should fire onComplete', function(done){
+      var onCompleteSpy = sinon.spy(dataLoader, 'onComplete');
+      dataLoader.start();
+      expect(onCompleteSpy).to.be.calledOnce;
+      done();
+    });
+
+    it('should allow custom onStart handler', function(done){
+      var check = 0;
+      dataLoader = new DataLoader({
+        id: id1,
+        path: pathString1,
+        onStart: function()
+        {
+          check = 1;
+          console.log('check: ', check);
+          this.triggerStart();
+        }
+      });
+
+      dataLoader.on('start', callBack);
+      dataLoader.start();
+      expect(callBack).to.be.calledOnce;
+      expect(check).to.equal(1);
+      done();
+    });
+
+    it('should allow custom onComplete handler', function(done){
+      var check = 0;
+      dataLoader = new DataLoader({
+        id: id1,
+        path: pathString1,
+        onComplete: function()
+        {
+          check = 1;
+          this.triggerComplete();
+        }
+      });
+
+      dataLoader.on('complete', callBack);
+      dataLoader.start();
+      expect(callBack).to.be.calledOnce;
+      expect(check).to.equal(1);
+      done();
+    });
+
     it('should trigger complete event', function(done){
       dataLoader.on('complete', callBack);
       dataLoader.start();
       expect(callBack).to.be.calledOnce;
+      expect(callBack).to.be.calledWithMatch({target:dataLoader});
       done();
     });
-
-
 
   });
   
