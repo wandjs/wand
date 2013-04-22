@@ -1,27 +1,21 @@
 var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require("sinon-chai");
-var $ = require("jquery");
 var AbstractLoader = require('../../lib/io/AbstractLoader');
 
-chai.use(sinonChai);
-
 var expect = chai.expect;
+chai.use(sinonChai);
 
 describe('AbstractLoader', function(){
   var id1 = 'a';
   var pathString1 = 'data/data-1.json';
   var pathString2 = 'data/data-2.json';
-  var pathFunction = function(){ return pathString2 };
-  var jsonString1 = '{ "message": "hello" }';
-  var json1 = { message: 'hello' };
+  var pathFunction = function(){ return pathString2; };
 
   var callBack;
   var dataLoader;
   var dataLoaderStringPath;
   var dataLoaderFunctionPath;
-
-  
 
   beforeEach(function() {
     callBack = sinon.spy();
@@ -35,7 +29,6 @@ describe('AbstractLoader', function(){
   });
 
   afterEach(function() {
-    // $.ajax.restore();
   });
 
   describe('initialize', function(){    
@@ -73,7 +66,7 @@ describe('AbstractLoader', function(){
       dataLoader.triggerStart();
       expect(callBack).to.be.calledOnce;
       expect(callBack).to.be.calledWithMatch({target:dataLoader});
-      done()
+      done();
     });
 
   });
@@ -85,7 +78,7 @@ describe('AbstractLoader', function(){
       dataLoader.triggerComplete();
       expect(callBack).to.be.calledOnce;
       expect(callBack).to.be.calledWithMatch({target:dataLoader});
-      done()
+      done();
     });
 
   });

@@ -24,12 +24,12 @@ describe('EventBus', function(){
     // Class definitions
     DogClass = function(options){
       this.mergeOptions(options, ['name', 'type']); 
-    }
+    };
     _.extend(DogClass.prototype, OptionMerger);
     
     CatClass = function(options){
       this.mergeOptions(options, {name: null, type: null, numLegs:catNumLegs}); 
-    }
+    };
     _.extend(CatClass.prototype, OptionMerger);
 
     // Variable definitions
@@ -86,7 +86,6 @@ describe('EventBus', function(){
 
     it('should work if an empty options object is passed in', function() {
       var tempCat = new CatClass({});
-      console.log('tempCat: ', tempCat);
       expect(tempCat.name).to.be.null;
       expect(tempCat.type).to.be.null;
       expect(tempCat.numLegs).to.be.equal(catNumLegs);

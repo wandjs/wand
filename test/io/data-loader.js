@@ -12,16 +12,13 @@ describe('DataLoader', function(){
   var id1 = 'a';
   var pathString1 = 'data/data-1.json';
   var pathString2 = 'data/data-2.json';
-  var pathFunction = function(){ return pathString2 };
-  var jsonString1 = '{ "message": "hello" }';
+  var pathFunction = function(){ return pathString2; };
   var json1 = { message: 'hello' };
 
   var callBack;
   var dataLoader;
   var dataLoaderStringPath;
   var dataLoaderFunctionPath;
-
-  var server;
 
   beforeEach(function() {
     callBack = sinon.spy();
@@ -40,8 +37,8 @@ describe('DataLoader', function(){
     $.ajax.restore();
   });
 
-  describe('start', function(){
-     it('should fire onStart', function(done){
+  describe('data-loader', function(){
+    it('should fire onStart', function(done){
       var onStartSpy = sinon.spy(dataLoader, 'onStart');
       dataLoader.start();
       expect(onStartSpy).to.be.calledOnce;
@@ -75,16 +72,16 @@ describe('DataLoader', function(){
       done();
     });
 
+    it('data should be set', function(done){
+      dataLoader.start();
+      expect(dataLoader.data).to.be.equal(json1);
+      done();
+    });
+
     it('complete should be true', function(done){
       expect(dataLoader.complete).to.be.false;
       dataLoader.start();
       expect(dataLoader.complete).to.be.true;
-      done();
-    });
-
-    it('data should be set', function(done){
-      dataLoader.start();
-      expect(dataLoader.data).to.be.equal(json1);
       done();
     });
 
@@ -142,5 +139,4 @@ describe('DataLoader', function(){
     });
 
   });  
-
 });
