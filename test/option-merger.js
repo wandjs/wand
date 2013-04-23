@@ -1,6 +1,6 @@
 var _ = require('underscore');
 var chai = require('chai');
-var OptionMerger = require('../lib/option-merger');
+var OptionMerger = require('../lib/OptionMerger');
 
 var expect = chai.expect;
 

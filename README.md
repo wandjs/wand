@@ -16,7 +16,13 @@ Bower: `bower install wand`
 
 Jam: `jam install wand`
 
-## Using Wand
+## Using Wand in the browser
+
+---------
+Wand is built in a modular fashion, meaning you will need to use RequireJS.
+
+Something about it's modules being in CommonJS format, and how you need to use the `packages` config in RequireJS
+---------
 
 Wand is made up of lots of independent modules. Each module is defined in the AMD format using RequireJS. This means you can simply require them in your own modules when you want to use them:
 

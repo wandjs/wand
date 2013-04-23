@@ -1,7 +1,7 @@
 var chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require("sinon-chai");
-var eventBus = require('../lib/event-bus');
+var EventBus = require('../lib/EventBus');
 
 chai.use(sinonChai);
 
@@ -22,9 +22,9 @@ describe('EventBus', function(){
     
     it('simple event handler should fire without arguments', function(done){
 
-      eventBus.on('myEvent', callBack);
+      EventBus.on('myEvent', callBack);
       
-      eventBus.trigger('myEvent');
+      EventBus.trigger('myEvent');
 
       expect(callBack).to.be.calledOnce;
 
@@ -33,9 +33,9 @@ describe('EventBus', function(){
 
     it('"eventNameSpace:" should trigger "eventNameSpace"', function(done){
 
-      eventBus.on('eventNameSpace:', callBack);
+      EventBus.on('eventNameSpace:', callBack);
       
-      eventBus.trigger('eventNameSpace:');
+      EventBus.trigger('eventNameSpace:');
 
       expect(callBack).to.be.calledOnce;
 
@@ -44,9 +44,9 @@ describe('EventBus', function(){
 
     it('":eventNameSpace" shouldn\'t trigger "eventNameSpace"', function(done){
 
-      eventBus.on('eventNameSpace', callBack);
+      EventBus.on('eventNameSpace', callBack);
       
-      eventBus.trigger(':eventNameSpace');
+      EventBus.trigger(':eventNameSpace');
 
       expect(callBack).to.not.be.calledOnce;
 
@@ -55,9 +55,9 @@ describe('EventBus', function(){
 
     it('simple event handler should fire with arguments', function(done){
 
-      eventBus.on('myEvent', callBack);
+      EventBus.on('myEvent', callBack);
       
-      eventBus.trigger('myEvent', simpleArg, complexArg);
+      EventBus.trigger('myEvent', simpleArg, complexArg);
       
       expect(callBack).to.be.calledOnce;
       expect(callBack).to.be.calledWithExactly(simpleArg, complexArg);
@@ -71,11 +71,11 @@ describe('EventBus', function(){
       var level1Callback = sinon.spy();
       var level2Callback = sinon.spy();
 
-      eventBus.on('outer', level0Callback);
-      eventBus.on('outer:inner', level1Callback);
-      eventBus.on('outer:inner:myEvent', level2Callback);
+      EventBus.on('outer', level0Callback);
+      EventBus.on('outer:inner', level1Callback);
+      EventBus.on('outer:inner:myEvent', level2Callback);
 
-      eventBus.trigger('outer:inner:myEvent');
+      EventBus.trigger('outer:inner:myEvent');
 
       expect(level0Callback).to.be.calledOnce;
       expect(level1Callback).to.be.calledOnce;
@@ -90,11 +90,11 @@ describe('EventBus', function(){
       var level1Callback = sinon.spy();
       var level2Callback = sinon.spy();
 
-      eventBus.on('outer', level0Callback);
-      eventBus.on('outer:inner', level1Callback);
-      eventBus.on('outer:inner:myEvent', level2Callback);
+      EventBus.on('outer', level0Callback);
+      EventBus.on('outer:inner', level1Callback);
+      EventBus.on('outer:inner:myEvent', level2Callback);
 
-      eventBus.trigger('outer:inner:myEvent', simpleArg, complexArg);
+      EventBus.trigger('outer:inner:myEvent', simpleArg, complexArg);
 
       expect(level0Callback).to.be.calledWith(simpleArg, complexArg);
       expect(level1Callback).to.be.calledWith(simpleArg, complexArg);

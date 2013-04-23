@@ -2,18 +2,18 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
 define(function(require, exports, module) {
     return {
-      BaseClass: require('./lib/base-class'),
-      BaseView: require('./lib/base-view'),
-      EventBus: require('./lib/event-bus'),
-      EventDispatcher: require('./lib/event-dispatcher'),
-      Templater: require('./lib/templater'),
-      Utils: require('./lib/utils'),
+      BaseClass: require('./lib/BaseClass'),
+      BaseView: require('./lib/BaseView'),
+      EventBus: require('./lib/EventBus'),
+      EventDispatcher: require('./lib/EventDispatcher'),
+      Templater: require('./lib/Templater'),
+      Utils: require('./lib/Utils'),
       controls: {
-        BaseControl: require('./lib/controls/base-control'),
-        Checkbox: require('./lib/controls/checkbox'),
-        DropDown: require('./lib/controls/drop-down'),
-        RadioButtonGroup: require('./lib/controls/radio-button-group'),
-        TextInput: require('./lib/controls/text-input')
+        BaseControl: require('./lib/controls/BaseControl'),
+        Checkbox: require('./lib/controls/Checkbox'),
+        DropDown: require('./lib/controls/Dropdown'),
+        RadioButtonGroup: require('./lib/controls/RadioButtonGroup'),
+        TextInput: require('./lib/controls/TextInput')
       },
       io: {
         AbstractLoader: require('./lib/io/AbstractLoader'),
