@@ -1,10 +1,10 @@
 var expect = require('chai').expect;
-var utils = require('../lib/utils');
+var Utils = require('../lib/Utils');
 
-describe('utils', function(){
+describe('Utils', function(){
 
   describe('round()', function(){
-    var round = utils.round;
+    var round = Utils.round;
     it('should round to nearest whole number with 0 or no precision', function(){
       expect(round(1)).to.equal(1);
       expect(round(1.4)).to.equal(1);
@@ -24,7 +24,7 @@ describe('utils', function(){
   });
 
   describe('roundTo()', function(){
-    var roundTo = utils.roundTo;
+    var roundTo = Utils.roundTo;
     it('should round to nearest whole number with 0 or no multiple', function(){
       expect(roundTo(1)).to.equal(1);
       expect(roundTo(1.4)).to.equal(1);
@@ -39,7 +39,7 @@ describe('utils', function(){
   });
 
   describe('clamp()', function(){
-    var clamp = utils.clamp;
+    var clamp = Utils.clamp;
     it('should not clamp number within range', function(){
       expect(clamp(5, 0, 10)).to.equal(5);
       expect(clamp(-5, -10, 0)).to.equal(-5);
@@ -58,7 +58,7 @@ describe('utils', function(){
   });
 
   describe('pmod()', function(){
-    var pmod = utils.pmod;
+    var pmod = Utils.pmod;
     it('should return value with same sign as the divisor', function(){
       expect(pmod(-10, 7)).to.equal(4);
       expect(pmod(10, -7)).to.equal(-4);
@@ -67,7 +67,7 @@ describe('utils', function(){
   });
 
   describe('sign()', function(){
-    var sign = utils.sign;
+    var sign = Utils.sign;
     it('should return 1 when value is a positive number', function(){
       expect(sign(1)).to.equal(1);
       expect(sign(0.1)).to.equal(1);
@@ -84,7 +84,7 @@ describe('utils', function(){
   });
 
   describe('lerp()', function(){
-    var lerp = utils.lerp;
+    var lerp = Utils.lerp;
     it('should return start value when ratio is 0', function(){
       expect(lerp(0, 0, 10)).to.equal(0);
       expect(lerp(0, -10, 0)).to.equal(-10);
@@ -104,7 +104,7 @@ describe('utils', function(){
   });
 
   describe('norm()', function(){
-    var norm = utils.norm;
+    var norm = Utils.norm;
     it('should return 0 when value equals min', function(){
       expect(norm(0, 0, 10)).to.equal(0);
       expect(norm(-10, -10, 0)).to.equal(0);
@@ -124,7 +124,7 @@ describe('utils', function(){
   });
 
   describe('scale()', function(){
-    var scale = utils.scale;
+    var scale = Utils.scale;
     it('should return outputFrom when value equals inputFrom', function(){
       expect(scale(0, 0, 1, 0, 10)).to.equal(0);
       expect(scale(10, 10, 20, 30, 40)).to.equal(30);
@@ -143,7 +143,7 @@ describe('utils', function(){
   });
 
   describe('loop()', function(){
-    var loop = utils.loop;
+    var loop = Utils.loop;
     it('should return min if value is greater than max', function(){
       expect(loop(11, 0, 10)).to.equal(0);
       expect(loop(1, -10, 0)).to.equal(-10);
@@ -164,7 +164,7 @@ describe('utils', function(){
   });
 
   describe('inRange()', function(){
-    var inRange = utils.inRange;
+    var inRange = Utils.inRange;
     it('should return true if value is in range', function(){
       expect(inRange(0, 0, 10)).to.be.true;
       expect(inRange(10, 0, 10)).to.be.true;
@@ -192,7 +192,7 @@ describe('utils', function(){
   });
 
   describe('isNear()', function(){
-    var isNear = utils.isNear;
+    var isNear = Utils.isNear;
     it('should return true if value is in range', function(){
       expect(isNear(5, 5, 0)).to.be.true;
       expect(isNear(5, 6, 1)).to.be.true;
@@ -209,7 +209,7 @@ describe('utils', function(){
   });
 
   describe('sum()', function(){
-    var sum = utils.sum;
+    var sum = Utils.sum;
     it('should return 0 when non-array is passed', function(){
       expect(sum()).to.equal(0);
       expect(sum('')).to.equal(0);
@@ -228,12 +228,12 @@ describe('utils', function(){
       expect(sum([{a:1}, {a:2}, {a:3}], 'a')).to.equal(6);
     });
     it('should return the addition of an arguments object', function(){
-      expect((function() { return utils.sum(arguments); }(1,2,3))).to.equal(6);
+      expect((function() { return Utils.sum(arguments); }(1,2,3))).to.equal(6);
     });
   });
 
   describe('walk()', function(){
-    var walk = utils.walk;
+    var walk = Utils.walk;
     var example = {
       a: {
         b: true
@@ -263,7 +263,7 @@ describe('utils', function(){
   });
 
   describe('deepForEach()', function(){
-    var deepForEach = utils.deepForEach;
+    var deepForEach = Utils.deepForEach;
     it('should iterate over nested objects', function(){
       var example = {
         a: 'one',
@@ -306,7 +306,7 @@ describe('utils', function(){
   });
 
   describe('replaceAll()', function(){
-    var replaceAll = utils.replaceAll;
+    var replaceAll = Utils.replaceAll;
     var phrase = 'the quick brown fox is quick and brown';
     it('should replace the search string with the replace string', function(){
       expect(replaceAll(phrase, 'quick', 'slow')).to.equal('the slow brown fox is slow and brown');
@@ -323,7 +323,7 @@ describe('utils', function(){
   });
 
   describe('rgbToHex()', function(){
-    var rgbToHex = utils.rgbToHex;
+    var rgbToHex = Utils.rgbToHex;
     it('should return correct hex color value when separate arguments are used', function(){
       expect(rgbToHex(255,255,255)).to.equal('#ffffff');
       expect(rgbToHex(0,0,0)).to.equal('#000000');
@@ -337,7 +337,7 @@ describe('utils', function(){
   });
 
   describe('hexToRgb()', function(){
-    var hexToRgb = utils.hexToRgb;
+    var hexToRgb = Utils.hexToRgb;
     it('should return correct rgb colors for short 3-digit hex value', function(){
       expect(hexToRgb('#fff')).to.eql({r:255,g:255,b:255});
       expect(hexToRgb('#000')).to.eql({r:0,g:0,b:0});
@@ -355,7 +355,7 @@ describe('utils', function(){
   });
 
   describe('empty()', function(){
-    var empty = utils.empty;
+    var empty = Utils.empty;
     it('should remove all elements of an array', function(){
       expect(empty([1,2])).to.be.empty;
     });
@@ -375,7 +375,7 @@ describe('utils', function(){
   });
 
   describe('createClass()', function(){
-    var createClass = utils.createClass;
+    var createClass = Utils.createClass;
     it('should return a constructor function when no arguments are given', function(){
       var Animal = createClass();
       expect(Animal).to.be.a('function');
@@ -481,6 +481,84 @@ describe('utils', function(){
       var dog = new Dog();
       expect((dog).species).to.equal('dog');
     });
+  });
+
+  describe('mergeOptions', function(){
+    
+    var dog;
+    var cat;
+    var weirdCat;
+
+    var dogName = 'Jasper';
+    var dogType = 'Retriever';
+    var catName = 'Boots';
+    var catType = 'Persian';
+    var catNumLegs = 4;
+    var weirdCatNumLegs = 5;
+    var weirdCatNumEyes = 3;
+
+    beforeEach(function(){
+      
+      dog = {};
+      Utils.mergeOptions(
+        dog,
+        ['name', 'type'],
+        {
+          name: dogName,
+          type: dogType
+        }
+      );
+
+      cat = {};
+      Utils.mergeOptions(
+        cat,
+        { name: null, type: null, numLegs:catNumLegs },
+        { name: catName, type: catType }
+      );
+
+      weirdCat = {};
+      Utils.mergeOptions(
+        weirdCat,
+        { name: null, type: null, numLegs:catNumLegs },
+        { name: catName, type: catType, numLegs: weirdCatNumLegs, numEyes: weirdCatNumEyes}
+      );
+
+    });
+    
+    it('should set values using array style definition', function() {
+      expect(dog.name).to.equal(dogName);
+      expect(dog.type).to.equal(dogType);
+    });
+
+    it('should set values using object style definition', function() {
+      expect(cat.name).to.equal(catName);
+      expect(cat.type).to.equal(catType);
+    });
+
+    it('should set default values using object style definition', function() {
+      expect(weirdCat.numEyes).to.equal(weirdCatNumEyes);
+    });
+
+    it('should allow overriding default values using object style definition', function() {
+      expect(weirdCat.numLegs).to.equal(catNumLegs);
+    });
+
+    it('should set defaults if no options are passed in', function() {
+      var tempCat = {};
+      Utils.mergeOptions(tempCat, null, { name: catName, type: null });
+
+      expect(tempCat.name).to.equal(catName);
+      expect(tempCat.type).to.be.null;
+    });
+
+    it('should set defaults if empty options are passed in', function() {
+      var tempCat = {};
+      Utils.mergeOptions(tempCat, {}, { name: catName, type: null });
+
+      expect(tempCat.name).to.equal(catName);
+      expect(tempCat.type).to.be.null;
+    });
+
   });
 
 });

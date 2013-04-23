@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var BaseClass = require('../lib/base-class');
+var BaseClass = require('../lib/BaseClass');
 
 describe('BaseClass', function() {
 

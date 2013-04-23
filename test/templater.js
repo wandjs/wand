@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var templater = require('../lib/templater');
+var Templater = require('../lib/Templater');
 var handleBars = require('handleBars');
 
 // Dummy raw templates
@@ -12,13 +12,13 @@ var footerRawTemplate = '<h3>{{emailAddress}}</h3>';
 var headerCompiledTemplate = handleBars.compile(headerRawTemplate);
 var footerCompiledTemplate = handleBars.compile(footerRawTemplate);
 
-describe('templater', function(){
+describe('Templater', function(){
 
   beforeEach(function(){
-    templater.clearRawTemplates();
-    templater.clearCompiledTemplates();
+    Templater.clearRawTemplates();
+    Templater.clearCompiledTemplates();
 
-    templater.initialize(
+    Templater.initialize(
       {
         rawTemplates: {
           inner: innerRawTemplate,
@@ -37,13 +37,13 @@ describe('templater', function(){
     
     it('should initialize with raw templates', function(){
       
-      expect(templater.getRawTemplate('inner')).to.equal(innerRawTemplate);
-      expect(templater.getRawTemplate('outer')).to.equal(outerRawTemplate);
+      expect(Templater.getRawTemplate('inner')).to.equal(innerRawTemplate);
+      expect(Templater.getRawTemplate('outer')).to.equal(outerRawTemplate);
     });
 
     it('should initialize with compiled templates', function(){
-      expect(templater.getCompiledTemplate('header')).to.equal(headerCompiledTemplate);
-      expect(templater.getCompiledTemplate('footer')).to.equal(footerCompiledTemplate);
+      expect(Templater.getCompiledTemplate('header')).to.equal(headerCompiledTemplate);
+      expect(Templater.getCompiledTemplate('footer')).to.equal(footerCompiledTemplate);
     });
     
   });
@@ -65,8 +65,8 @@ describe('templater', function(){
         }
       };
 
-      expect(templater.template('inner', simpleDataProvider)).to.equal('<p>body text</p>');
-      expect(templater.template('outer', nestedDataProvider)).to.equal('<hr/><div><h1>title text</h1><p>body text</p></div><hr/>');
+      expect(Templater.template('inner', simpleDataProvider)).to.equal('<p>body text</p>');
+      expect(Templater.template('outer', nestedDataProvider)).to.equal('<hr/><div><h1>title text</h1><p>body text</p></div><hr/>');
       
     });
     
@@ -75,68 +75,68 @@ describe('templater', function(){
   describe('addRawTemplates', function(){
     it('should add raw templates', function(){
       
-      templater.addRawTemplates({
+      Templater.addRawTemplates({
         header: headerRawTemplate,
         footer: footerRawTemplate
       });
 
-      expect(templater.getRawTemplate('header')).to.equal(headerRawTemplate);
-      expect(templater.getRawTemplate('footer')).to.equal(footerRawTemplate);
+      expect(Templater.getRawTemplate('header')).to.equal(headerRawTemplate);
+      expect(Templater.getRawTemplate('footer')).to.equal(footerRawTemplate);
     });
   });
 
   describe('addCompiledTemplates', function(){
     it('should add compiled templates', function(){
       
-      templater.addCompiledTemplates({
+      Templater.addCompiledTemplates({
         header: headerCompiledTemplate,
         footer: footerCompiledTemplate
       });
 
-      expect(templater.getCompiledTemplate('header')).to.equal(headerCompiledTemplate);
-      expect(templater.getCompiledTemplate('footer')).to.equal(footerCompiledTemplate);
+      expect(Templater.getCompiledTemplate('header')).to.equal(headerCompiledTemplate);
+      expect(Templater.getCompiledTemplate('footer')).to.equal(footerCompiledTemplate);
     });
   });
 
   describe('getRawTemplate', function(){
     it('should get raw template', function(){
-      expect(templater.getRawTemplate('inner')).to.equal(innerRawTemplate);
-      expect(templater.getRawTemplate('outer')).to.equal(outerRawTemplate);
+      expect(Templater.getRawTemplate('inner')).to.equal(innerRawTemplate);
+      expect(Templater.getRawTemplate('outer')).to.equal(outerRawTemplate);
     });
   });
 
   describe('getCompiledTemplate', function(){
     it('should get compiled template', function(){
-      expect(templater.getCompiledTemplate('header')).to.equal(headerCompiledTemplate);
-      expect(templater.getCompiledTemplate('footer')).to.equal(footerCompiledTemplate);
-      expect(templater.getCompiledTemplate('none')).to.not.exist;
+      expect(Templater.getCompiledTemplate('header')).to.equal(headerCompiledTemplate);
+      expect(Templater.getCompiledTemplate('footer')).to.equal(footerCompiledTemplate);
+      expect(Templater.getCompiledTemplate('none')).to.not.exist;
     });
   });
 
   describe('compileAllRawTemplates', function(){
     it('should compile all raw templates', function(){
-      templater.compileAllRawTemplates();
+      Templater.compileAllRawTemplates();
 
-      expect(templater.getCompiledTemplate('inner')).to.exist;
-      expect(templater.getCompiledTemplate('inner')).to.be.instanceof(Function);
+      expect(Templater.getCompiledTemplate('inner')).to.exist;
+      expect(Templater.getCompiledTemplate('inner')).to.be.instanceof(Function);
     });
   });
 
   describe('clearRawTemplates', function(){
     it('should clear all raw templates', function(){
-      templater.clearRawTemplates();
+      Templater.clearRawTemplates();
 
-      expect(templater.getRawTemplate('inner')).to.not.exist;
-      expect(templater.getRawTemplate('outer')).to.not.exist;
+      expect(Templater.getRawTemplate('inner')).to.not.exist;
+      expect(Templater.getRawTemplate('outer')).to.not.exist;
     });
   });
 
   describe('clearCompiledTemplates', function(){
     it('should clear all compiled templates', function(){
-      templater.clearCompiledTemplates();
+      Templater.clearCompiledTemplates();
 
-      expect(templater.getCompiledTemplate('header')).to.not.exist;
-      expect(templater.getCompiledTemplate('footer')).to.not.exist;
+      expect(Templater.getCompiledTemplate('header')).to.not.exist;
+      expect(Templater.getCompiledTemplate('footer')).to.not.exist;
     });
   });
 
