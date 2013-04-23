@@ -483,4 +483,82 @@ describe('Utils', function(){
     });
   });
 
+  describe('mergeOptions', function(){
+    
+    var dog;
+    var cat;
+    var weirdCat;
+
+    var dogName = 'Jasper';
+    var dogType = 'Retriever';
+    var catName = 'Boots';
+    var catType = 'Persian';
+    var catNumLegs = 4;
+    var weirdCatNumLegs = 5;
+    var weirdCatNumEyes = 3;
+
+    beforeEach(function(){
+      
+      dog = {};
+      Utils.mergeOptions(
+        dog,
+        ['name', 'type'],
+        {
+          name: dogName,
+          type: dogType
+        }
+      );
+
+      cat = {};
+      Utils.mergeOptions(
+        cat,
+        { name: null, type: null, numLegs:catNumLegs },
+        { name: catName, type: catType }
+      );
+
+      weirdCat = {};
+      Utils.mergeOptions(
+        weirdCat,
+        { name: null, type: null, numLegs:catNumLegs },
+        { name: catName, type: catType, numLegs: weirdCatNumLegs, numEyes: weirdCatNumEyes}
+      );
+
+    });
+    
+    it('should set values using array style definition', function() {
+      expect(dog.name).to.equal(dogName);
+      expect(dog.type).to.equal(dogType);
+    });
+
+    it('should set values using object style definition', function() {
+      expect(cat.name).to.equal(catName);
+      expect(cat.type).to.equal(catType);
+    });
+
+    it('should set default values using object style definition', function() {
+      expect(weirdCat.numEyes).to.equal(weirdCatNumEyes);
+    });
+
+    it('should allow overriding default values using object style definition', function() {
+      expect(weirdCat.numLegs).to.equal(catNumLegs);
+    });
+
+    it('should set defaults if no options are passed in', function() {
+      var tempCat = {};
+      Utils.mergeOptions(tempCat, null, { name: catName, type: null });
+
+      expect(tempCat.name).to.equal(catName);
+      expect(tempCat.type).to.be.null;
+    });
+
+    it('should set defaults if empty options are passed in', function() {
+      var tempCat = {};
+      Utils.mergeOptions(tempCat, {}, { name: catName, type: null });
+
+      expect(tempCat.name).to.equal(catName);
+      expect(tempCat.type).to.be.null;
+    });
+
+  });
+
 });
