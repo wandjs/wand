@@ -1,0 +1,13 @@
+{
+  "name": "wand",
+  "version": "0.0.2",
+  "main": "./main.js",
+  "dependencies": {},
+  "ignore": [
+    "node_modules",
+    "test",
+    ".gitignore",
+    "Gruntfile.js",
+    "package.json"
+  ]
+}
