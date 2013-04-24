@@ -7,13 +7,14 @@ Wand is aimed primarily at Backbone-based web app development, but many of the m
 Wand is designed to be as modular as possible. You're not required to use all of it if you just want to use part of it - pick and choose the features you want.
 
 
-## Key features
-
-* Simple modules to help bind data sources to HTML controls, such as checkboxes, radio-buttons and text boxes.
-* Extensions to Backbone.View to help with common lifecycle tasks and nested view management.
-* Flexible event system to help inter-module communication throughout apps.
-* Load manager for loading assets such as images and json data.
-* General utilities to help maximise the power of Underscore.js.
+## Wand Modules
+* [BaseClass](https://github.com/wandjs/wand/wiki/BaseClass) - Provides prototypal inheritance and Backbone style class definition.
+* [BaseView](https://github.com/wandjs/wand/wiki/BaseView) - [Documentation required]
+* [BindableControls](https://github.com/wandjs/wand/wiki/BindableControls) - Lightweight, customizable binding of data sources to HTML controls and views.
+* [EventBus](https://github.com/wandjs/wand/wiki/EventBus) - Flexible event system to allow inter-module communication.
+* [EventDispatcher](https://github.com/wandjs/wand/wiki/EventDispatcher) - Adds Backbone event dispatching functionality to BaseClass
+* [Templater](https://github.com/wandjs/wand/wiki/Templater) - Nested templating for Handlebars
+* [Utils](https://github.com/wandjs/wand/wiki/Utils) - Lots of useful stuff.
 
 
 ## Getting started with Wand in a browser app
@@ -96,11 +97,6 @@ Or you can import the individual modules:
     var rounded = Wand.Utils.round(4.5);
 
 (Please note: the `lib` folder is necessary, and is a minor inconvenience in order to support cross-compatibility with CommonJS and AMD formats).
-
-
-## The Wand Modules
-
-TODO: Put links to Wiki pages
 
 
 ## Wand's Dependencies
