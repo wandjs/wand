@@ -132,7 +132,7 @@ Future plans include:
 
 * Modules to be split out into separate repositories
 * A stateful extension to Backbone.Router
-* Cascading global/locale/n… JavaScript/JSON config manager
+* Cascading n-level JavaScript/JSON config manager
 * A low level command system to facilitate undo/redo
 * A model layer with server state caching and resetting
 
