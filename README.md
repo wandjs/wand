@@ -1,20 +1,26 @@
 # Wand
 
-A collection of tools for HTML5 web app development, built upon Backbone, Underscore and jQuery.
+A collection of tools for HTML5 web app development, built on RequireJS, Backbone, Underscore and jQuery.
 
-Wand is aimed primarily at Backbone-based web app development, but many of the modules don't require it as a dependency, meaning it can be useful in conjunction with other frameworks and utilities.
+## Introduction
 
-Wand is designed to be as modular as possible. You're not required to use all of it if you just want to use part of it - pick and choose the features you want.
+Wand is aimed primarily at Backbone-based web app development, but many of the modules don't require it as a dependency, meaning it can be used in conjunction with other frameworks and utilities.
+
+The library is designed to be as modular as possible, so use the features you want, and let RequireJS handle the dependencies.
 
 
-## Wand Modules
+## Modules
 * [BaseClass](https://github.com/wandjs/wand/wiki/BaseClass) - Provides prototypal inheritance and Backbone style class definition.
 * [BaseView](https://github.com/wandjs/wand/wiki/BaseView) - [Documentation required]
 * [BindableControls](https://github.com/wandjs/wand/wiki/BindableControls) - Lightweight, customizable binding of data sources to HTML controls and views.
 * [EventBus](https://github.com/wandjs/wand/wiki/EventBus) - Flexible event system to allow inter-module communication.
 * [EventDispatcher](https://github.com/wandjs/wand/wiki/EventDispatcher) - Adds Backbone event dispatching functionality to BaseClass
+* [IO](https://github.com/wandjs/wand/wiki/IO) - Extensible data and asset loading framework with an interruptible load queue.
 * [Templater](https://github.com/wandjs/wand/wiki/Templater) - Nested templating for Handlebars
 * [Utils](https://github.com/wandjs/wand/wiki/Utils) - Lots of useful stuff.
+
+*(See Roadmap for future plans)*
+
 
 
 ## Getting started with Wand in a browser app
