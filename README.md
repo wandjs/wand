@@ -124,3 +124,16 @@ These are required by *some*, but not *all* modules. Please see each module's do
 
 * [Backbone](http://backbonejs.org/) - version `~1.0.0`
 * [Handlebars](http://handlebarsjs.com/) - version `~1.0.10`
+
+
+##RoadMap
+
+Future plans include:
+
+* Modules to be split out into separate repositories
+* A stateful extension to Backbone.Router
+* Cascading global/locale/n… JavaScript/JSON config manager
+* A low level command system to facilitate undo/redo
+* A model layer with server state caching and resetting
+
+And in the slightly more distant future, real time and push functionality using Node.js and Socket.io.
