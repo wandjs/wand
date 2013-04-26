@@ -19,7 +19,7 @@ The library is designed to be as modular as possible, so use the features you wa
 * [Templater](https://github.com/wandjs/wand/wiki/Templater) - Nested templating for Handlebars
 * [Utils](https://github.com/wandjs/wand/wiki/Utils) - Lots of useful stuff.
 
-*(See Roadmap for future plans)*
+*(See [Roadmap](https://github.com/wandjs/wand#roadmap) for future plans)*
 
 
 
