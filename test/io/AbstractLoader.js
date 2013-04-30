@@ -111,6 +111,12 @@ describe('AbstractLoader', function(){
       done();
     });
 
+    it('should fire start callback', function(done){
+      dataLoader.start(callBack);
+      expect(callBack).to.be.calledOnce;
+      done();
+    });
+
     it('should trigger start event', function(done){
       dataLoader.on('start', callBack);
       dataLoader.start();
