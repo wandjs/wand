@@ -11,7 +11,7 @@ The library is designed to be as modular as possible, so use the features you wa
 
 ## Modules
 * [BaseClass](https://github.com/wandjs/wand/wiki/BaseClass) - Provides prototypal inheritance and Backbone style class definition.
-* [BaseView](https://github.com/wandjs/wand/wiki/BaseView) - [Documentation required]
+* [BaseView](https://github.com/wandjs/wand/wiki/BaseView) - A subclass of `Backbone.View` that helps with lifecycle management
 * [BindableControls](https://github.com/wandjs/wand/wiki/BindableControls) - Lightweight, customizable binding of data sources to HTML controls and views.
 * [EventBus](https://github.com/wandjs/wand/wiki/EventBus) - Flexible event system to allow inter-module communication.
 * [EventDispatcher](https://github.com/wandjs/wand/wiki/EventDispatcher) - Adds Backbone event dispatching functionality to BaseClass
