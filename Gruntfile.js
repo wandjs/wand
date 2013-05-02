@@ -46,7 +46,11 @@ module.exports = function(grunt) {
     mocha: {
       src: ['test/**/*.js'],
       options: {
-        reporter: 'dot'
+        reporter: 'dot',
+        debug: true,
+        verbose: true,
+        run: true,
+        stdio: 'inherit'
       }
     },
     watch: {
