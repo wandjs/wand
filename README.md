@@ -18,6 +18,7 @@ The library is designed as a collection of modules, provided in CommonJS and AMD
 * [EventDispatcher](https://github.com/wandjs/wand/wiki/EventDispatcher) - Adds Backbone event dispatching functionality to BaseClass
 * [IO](https://github.com/wandjs/wand/wiki/IO) - Extensible data and asset loading framework with an interruptible load queue.
 * [Templater](https://github.com/wandjs/wand/wiki/Templater) - Nested templating for Handlebars
+* [ShowHide](https://github.com/wandjs/wand/wiki/ShowHide) - A mixin to add show/hide functionality to views.
 * [Utils](https://github.com/wandjs/wand/wiki/Utils) - Lots of useful stuff.
 
 *(See [Roadmap](https://github.com/wandjs/wand#roadmap) for future plans)*
