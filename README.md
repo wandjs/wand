@@ -1,19 +1,20 @@
 # Wand
 
-A collection of tools for HTML5 web app development, built on RequireJS, Backbone, Underscore and jQuery.
+> A collection of tools for HTML5 web app development.
 
 ## Introduction
 
-Wand is aimed primarily at Backbone-based web app development, but many of the modules don't require it as a dependency, meaning it can be used in conjunction with other frameworks and utilities.
+Wand provides a collection of classes and utilities that help with modern HTML5 web app development. While Wand is aimed primarily at Backbone-based development it's not exclusive to it. Many of the features don't rely on Backbone as a dependency, meaning you're free to use them alone or in conjunction with other frameworks.
 
-The library is designed to be as modular as possible, so use the features you want, and let RequireJS handle the dependencies.
+The library is designed as a collection of modules, provided in CommonJS and AMD format. You can  use the whole library or just the modules you want. Dependencies are handled for you and unused modules won't be downloaded or included in optimized builds. Wand tries to keep your app as light as possible.
 
 
 ## Modules
-* [BaseClass](https://github.com/wandjs/wand/wiki/BaseClass) - Provides prototypal inheritance and Backbone style class definition.
-* [BaseView](https://github.com/wandjs/wand/wiki/BaseView) - A subclass of `Backbone.View` that helps with lifecycle management
+
+* [BaseClass](https://github.com/wandjs/wand/wiki/BaseClass) - Provides Backbone-style definitions for your custom classes.
+* [BaseView](https://github.com/wandjs/wand/wiki/BaseView) - A subclass of `Backbone.View` that helps with lifecycle and subview management.
 * [BindableControls](https://github.com/wandjs/wand/wiki/BindableControls) - Lightweight, customizable binding of data sources to HTML controls and views.
-* [EventBus](https://github.com/wandjs/wand/wiki/EventBus) - Flexible event system to allow inter-module communication.
+* [EventBus](https://github.com/wandjs/wand/wiki/EventBus) - Centralised event system for communicating across modules.
 * [EventDispatcher](https://github.com/wandjs/wand/wiki/EventDispatcher) - Adds Backbone event dispatching functionality to BaseClass
 * [IO](https://github.com/wandjs/wand/wiki/IO) - Extensible data and asset loading framework with an interruptible load queue.
 * [Templater](https://github.com/wandjs/wand/wiki/Templater) - Nested templating for Handlebars
@@ -25,62 +26,74 @@ The library is designed to be as modular as possible, so use the features you wa
 
 ## Getting started with Wand in a browser app
 
+The easiest way to get started with Wand is to use the [boilerplate](https://github.com/wandjs/wand-boilerplate) library. If you want to configure it yourself then following steps will show you how.
+
 ### Install Wand via Bower
 
 The best way to install and use Wand in a browser app is to use the [Bower](http://bower.io/) package manager:
 
     bower install wand
 
-This will install Wand into `components/wand` or whatever directory you've specified in your `.bowerrc` file.
+This will install Wand into `components/wand` (or the directory you've specified in your `.bowerrc` file).
 
-Alternatively you can install Wand via [Jam](http://jamjs.org/):
+Wand is also available via [Jam](http://jamjs.org/):
 
     jam install wand
 
 
-### Set up RequireJS
+### Configure RequireJS
 
-In order to use Wand you must use the [RequireJS](http://requirejs.org/) AMD loader. Wand is written as a CommonJS package, but each module is also wrapped in an AMD function, allowing the library to be used both in Node.js and the browser. Because of this you need to configure RequireJS to treat Wand as a CommonJS package.
+In order to use Wand you must use the [RequireJS](http://requirejs.org/) AMD loader. Wand is written as a CommonJS package, but each module is also wrapped in an AMD function, allowing the library to be used both in Node.js and the browser. Because of this you'll need to configure RequireJS to treat Wand as a module:
 
-To do this just ensure Wand is specified as a package in your RequireJS config:
+```javascript
+require.config({
+  // Map library paths to shorter ones
+  paths: {
+    'jquery': '/components/jquery/jquery',
+    'underscore': '/components/underscore/underscore',
+    'backbone': '/components/backbone/backbone'
+  },
 
-    require.config({
-      packages: [{
-        name: 'wand',
-        location: '/components/wand'
-      }],
-    });
+  // Configure Wand as a CommonJS package
+  packages: [{
+    name: 'wand',
+    location: '/components/wand'
+  }]
+});
+```
 
-(Here we are assuming you've installed Wand into the default `components` directory provided by Bower.)
+**Note:** this assumes you've installed the libraries into the default `components` directory provided by Bower.
 
-For more information see [Loading modules from packages](http://requirejs.org/docs/api.html#packages) in the RequireJS documentation.
+See [Loading modules from packages](http://requirejs.org/docs/api.html#packages) in the RequireJS documentation for more information on how to handle CommonJS packages.
 
 
-### Requiring Wand
+### Using Wand
 
-There are two ways to use Wand in your RequireJS modules:
+There are two ways to use Wand in your own RequireJS modules:
 
-##### Include the entire Wand library:
+**Include the entire Wand library:**
 
     define(['wand'], function(Wand) {
       var Animal = Wand.BaseView.extend({});
       var rounded = Wand.Utils.round(4.5);
     });
 
-This is the most convenient, and preferable method. Each module in Wand will be accessible as a property of the returned `Wand` object. However, be aware that it will load *all* modules. See the example below for an alternative to this.
+This is the most convenient method. Each module in Wand will be accessible as a property of the returned `Wand` object. However, be aware that this will load *all* modules.
 
-##### Include the individual modules
+**Include the individual modules:**
 
     define(['wand/lib/BaseView', 'wand/lib/Utils'], function($, BaseView) {
       var Animal = BaseView.extend({});
       var rounded = Utils.round(4.5);
     });
 
-This is a more explicit approach and allows you to see exactly what modules from Wand are used. It also means that only those modules will be loaded, helping keep script size and download times to a minimum.
+This is a more explicit approach. It ensures only specific modules and their dependencies will be loaded, keeping script size and download times to a minimum.
 
-(Please note: the `lib` folder is necessary, and is a minor inconvenience in order to support cross-compatibility with CommonJS and AMD formats).
+**Note:** the `lib` in the module paths is necessary.
 
-For information on using each Wand module please see the Wiki.
+### The Wand modules
+
+See the [Wand wiki](https://github.com/wandjs/wand/wiki) for information on each module.
 
 
 ## Using Wand in Node.js
@@ -92,22 +105,22 @@ For information on using each Wand module please see the Wiki.
 
 ### Requiring Wand
 
-As with the browser-based version you can import the entire Wand library, and access the modules as properties of the returned object:
+As with the browser-based version you can use the library in two different ways:
 
     var Wand = require('wand');
     var rounded = Wand.Utils.round(4.5);
 
-Or you can import the individual modules:
+Or import the individual modules:
 
     var Utils = require('wand/lib/Utils');
     var rounded = Wand.Utils.round(4.5);
 
-(Please note: the `lib` folder is necessary, and is a minor inconvenience in order to support cross-compatibility with CommonJS and AMD formats).
+**Note:** the `lib` in the module paths is necessary.
 
 
 ## Wand's Dependencies
 
-If you're using npm, Bower, or Jam then dependencies will be managed for you. However it is  useful to understand what frameworks and libraries Wand requires in order to manage browser dependencies safely.
+If you're using npm, Bower, or Jam then dependencies will be managed for you. However it's  useful to understand what frameworks and libraries Wand requires in order to manage browser dependencies safely.
 
 
 ### Hard dependencies
@@ -130,7 +143,6 @@ These are required by *some*, but not *all* modules. Please see each module's do
 
 Future plans include:
 
-* Modules to be split out into separate repositories
 * A stateful extension to Backbone.Router
 * Cascading n-level JavaScript/JSON config manager
 * A low level command system to facilitate undo/redo
