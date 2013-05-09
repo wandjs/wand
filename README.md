@@ -1,12 +1,12 @@
 # Wand
 
-> A collection of tools for HTML5 web app development.
+> A collection of classes and utilities for HTML5/JavaScript web app development.
 
 ## Introduction
 
-Wand provides a collection of classes and utilities that help with modern HTML5 web app development. While Wand is aimed primarily at Backbone-based development it's not exclusive to it. Many of the features don't rely on Backbone as a dependency, meaning you're free to use them alone or in conjunction with other frameworks.
+Wand is a library of tools to help you write modern web apps. It's designed to be used in conjunction with Backbone, but it's not exclusive to it. Many of the features don't rely on Backbone as a dependency, meaning you're free to use them alone or with other frameworks.
 
-The library is designed as a collection of modules, provided in CommonJS and AMD format. You can  use the whole library or just the modules you want. Dependencies are handled for you and unused modules won't be downloaded or included in optimized builds. Wand tries to keep your app as light as possible.
+The library is built as a collection of modules, provided in CommonJS and AMD format. You can  use the whole library or just the modules you want. Dependencies are handled for you and unused modules won't be downloaded or included in optimized builds. Wand tries to keep your app as light as possible.
 
 
 ## Modules
