@@ -8,101 +8,58 @@ chai.use(sinonChai);
 var expect = chai.expect;
 
 describe('EventBus', function(){
-
-  var simpleArg = 'hello';
-  var complexArg = { message:'world' };
-  var callBack;
-
-
-  beforeEach(function(){
-    callBack = sinon.spy();
-  });
-
   describe('trigger', function(){
+    it('should not do anything when triggered with no parameters', function(done) {
+      expect(EventBus.trigger()).to.equal(EventBus);
+      done();
+    });
     
-    it('simple event handler should fire without arguments', function(done){
-
-      EventBus.on('myEvent', callBack);
-      
-      EventBus.trigger('myEvent');
-
-      expect(callBack).to.be.calledOnce;
-
+    it('it should trigger a single event namespace', function(done){
+      var callback1 = sinon.spy();
+      EventBus.on('one', callback1);
+      EventBus.trigger('one');
+      expect(callback1).to.be.calledOnce;
+      done();
+    });
+    
+    it('it should trigger a double event namespace', function(done){
+      var callback1 = sinon.spy();
+      var callback2 = sinon.spy();
+      EventBus.on('one', callback1);
+      EventBus.on('one:two', callback2);
+      EventBus.trigger('one:two');
+      expect(callback1).to.be.calledOnce;
+      expect(callback2).to.be.calledOnce;
       done();
     });
 
-    it('"eventNameSpace:" should trigger "eventNameSpace"', function(done){
-
-      EventBus.on('eventNameSpace:', callBack);
-      
-      EventBus.trigger('eventNameSpace:');
-
-      expect(callBack).to.be.calledOnce;
-
+    it('it should trigger a single event namespace with additional arguments', function(done){
+      var callback1 = sinon.spy();
+      EventBus.on('one', callback1);
+      EventBus.trigger('one', 'hello', 5);
+      expect(callback1).to.be.calledWithExactly('hello', 5);
       done();
     });
 
-    it('":eventNameSpace" shouldn\'t trigger "eventNameSpace"', function(done){
-
-      EventBus.on('eventNameSpace', callBack);
-      
-      EventBus.trigger(':eventNameSpace');
-
-      expect(callBack).to.not.be.calledOnce;
-
+    it('it should trigger a double event namespace with additional arguments', function(done){
+      var callback1 = sinon.spy();
+      var callback2 = sinon.spy();
+      EventBus.on('one', callback1);
+      EventBus.on('one:two', callback2);
+      EventBus.trigger('one:two', 'hello', 5);
+      expect(callback1).to.be.calledWithExactly('hello', 5);
+      expect(callback2).to.be.calledWithExactly('hello', 5);
       done();
     });
-
-    it('simple event handler should fire with arguments', function(done){
-
-      EventBus.on('myEvent', callBack);
-      
-      EventBus.trigger('myEvent', simpleArg, complexArg);
-      
-      expect(callBack).to.be.calledOnce;
-      expect(callBack).to.be.calledWithExactly(simpleArg, complexArg);
-
+    
+    it('it should trigger the deepest namespaced event first', function(done){
+      var callback1 = sinon.spy();
+      var callback2 = sinon.spy();
+      EventBus.on('one', callback1);
+      EventBus.on('one:two', callback2);
+      EventBus.trigger('one:two');
+      expect(callback2).to.be.calledBefore(callback1);
       done();
     });
-
-    it('complex event handler should fire without arguments', function(done){
-
-      var level0Callback = sinon.spy();
-      var level1Callback = sinon.spy();
-      var level2Callback = sinon.spy();
-
-      EventBus.on('outer', level0Callback);
-      EventBus.on('outer:inner', level1Callback);
-      EventBus.on('outer:inner:myEvent', level2Callback);
-
-      EventBus.trigger('outer:inner:myEvent');
-
-      expect(level0Callback).to.be.calledOnce;
-      expect(level1Callback).to.be.calledOnce;
-      expect(level2Callback).to.be.calledOnce;
-
-      done();
-    });
-
-    it('complex event handler should fire without arguments', function(done){
-
-      var level0Callback = sinon.spy();
-      var level1Callback = sinon.spy();
-      var level2Callback = sinon.spy();
-
-      EventBus.on('outer', level0Callback);
-      EventBus.on('outer:inner', level1Callback);
-      EventBus.on('outer:inner:myEvent', level2Callback);
-
-      EventBus.trigger('outer:inner:myEvent', simpleArg, complexArg);
-
-      expect(level0Callback).to.be.calledWith(simpleArg, complexArg);
-      expect(level1Callback).to.be.calledWith(simpleArg, complexArg);
-      expect(level2Callback).to.be.calledWith(simpleArg, complexArg);
-
-      done();
-    });
-
   });
-
 });
