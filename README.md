@@ -12,6 +12,7 @@ The library is built as a collection of modules, provided in CommonJS and AMD fo
 ## Modules
 
 * [BaseClass](https://github.com/wandjs/wand/wiki/BaseClass) - Provides Backbone-style definitions for your custom classes.
+* [BaseModel](https://github.com/wandjs/wand/wiki/BaseModel) - A subclass of `Backbone.Model` that helps manage nested models.
 * [BaseView](https://github.com/wandjs/wand/wiki/BaseView) - A subclass of `Backbone.View` that helps with lifecycle and subview management.
 * [BindableControls](https://github.com/wandjs/wand/wiki/BindableControls) - Lightweight, customizable binding of data sources to HTML controls and views.
 * [EventBus](https://github.com/wandjs/wand/wiki/EventBus) - Centralised event system for communicating across modules.
