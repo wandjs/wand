@@ -1,8 +1,12 @@
 {
   "name": "wand",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": "./main.js",
-  "dependencies": {},
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "backbone": "~1.0.0",
+    "handlebars.js": "1.0.0-rc.4"
+  },
   "ignore": [
     "node_modules",
     "test",
