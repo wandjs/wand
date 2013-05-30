@@ -207,5 +207,4 @@ describe('Math', function(){
       expect(isNear(5, 5)).to.be.true;
     });
   });
-
-})
+});
