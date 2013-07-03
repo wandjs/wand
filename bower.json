@@ -1,6 +1,6 @@
 {
   "name": "wand",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "./main.js",
   "ignore": [
     "node_modules",
