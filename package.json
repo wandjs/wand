@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "amdefine": "0.0.4",
-    "underscore": "~1.4.4",
+    "underscore": "~1.6.0",
     "backbone": "~1.0.0",
     "handlebars": "~1.0.10"
   },
